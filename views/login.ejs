@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <div class="row">
+      <div class="col-sm-12">
+        <form action="/login" method="post">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="username">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="password">
+          </div>
+          <input type="hidden" name="_csrf" value="<%= token %>">
+          <button class="btn btn-primary btn-block">Login</button>
+        </form>
+      </div>
+    </div>
+    <div class="row top-margin">
+      <div class="col-sm-6">
+        <button class="btn btn-block facebook">
+          <i class="fa fa-facebook"></i>
+          facebook
+        </button>
+      </div>
+      <div class="col-sm-6">
+        <button class="btn btn-block google">
+          <i class="fa fa-google"></i>
+          google
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

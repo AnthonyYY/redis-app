@@ -1,16 +1,14 @@
+var util = require('../middleware/utilities');
+
 module.exports.index = index;
-module.exports.login = index;
+module.exports.login = login;
 module.exports.loginProcess = loginProcess;
 module.exports.chat = chat;
+module.exports.logOut = logOut;
 
 function index(req,res){
-  res.cookie('Index Cookie','This was set from Index')
-  console.log(req.signedCookies);
   res.render('index',{
-    title: 'Index',
-    cookie: JSON.stringify(req.cookies),
-    signedCookie: JSON.stringify(req.signedCookies),
-    session: JSON.stringify(req.session)
+    title: 'Index'
   });
 }
 
@@ -19,9 +17,15 @@ function login(req,res){
 }
 
 function loginProcess(req,res){
-  res.render('login process');
+  var isAuth = util.auth(req.body.username,req.body.password,req.session);
+  isAuth ? res.redirect('/chat') : res.redirect('/login');
 }
 
 function chat(req,res){
   res.render('chat',{title: 'chat'});
+}
+
+function logOut(req,res){
+  util.logOut(req.session);
+  res.redirect('/');
 }
