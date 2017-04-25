@@ -13,14 +13,13 @@
   <div class="row">
     <div class="col-sm-4">
         <h1 class="pull-left">PasktChat</h1>
-      </div>
     </div>
     <div class="col-sm-4 col-sm-offset-4 top-margin">
       <div class="pull-right">
         <% if(isAuthenticated){ %>
           <%- partial('partials/user-login') %>
         <% }else{ %>
-          <%- partial('partials/user-loggedout') %>
+          <%- partial('partials/user-logout') %>
         <% } %>
       </div>
     </div>

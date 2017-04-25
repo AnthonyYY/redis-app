@@ -1,3 +1,11 @@
+var config = require('../config');
+
+module.exports.templateRoutes = function(req,res,next){
+  res.locals.routes = config.routes;
+  next();
+};
+
+
 module.exports.csrf = function(req,res,next){
   res.locals.token = req.csrfToken();
   next();
@@ -15,7 +23,7 @@ module.exports.requireAuthentication = function(req,res,next){
   if(req.session.isAuthenticated){
     next();
   }else {
-    res.redirect('/login');
+    res.redirect(config.routes.login);
   }
 };
 
