@@ -28,5 +28,12 @@
     <%- body %>
   </div>
 </div>
+<script src="/js/socket.io.js" charset="utf-8"></script>
+<script>
+  const socket = io.connect('http://localhost:3000/packtchat')
+  socket.on('message',function(data){
+    console.log(data);
+  })
+</script>
 </body>
 </html>

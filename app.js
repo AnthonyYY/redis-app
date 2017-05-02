@@ -9,6 +9,7 @@ const RedisStore = require('connect-redis')(session);
 const csrf = require('csurf');
 const flash = require('connect-flash');
 
+const io = require('./socket.io');
 const config = require('./config');
 const routes = require('./routes');
 const errorHandler = require('./middleware/errorHandler');
@@ -48,6 +49,7 @@ app.get(config.routes.logout,routes.logOut);
 app.use(errorHandler.error);
 app.use(errorHandler.notFound);
 
-app.listen(config.port,function () {
+const server = app.listen(config.port,function () {
   console.log('App server running on port ' + config.port);
 });
+io.startIo(server);
